@@ -22,11 +22,5 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom);
         NavController navController= Navigation.findNavController(this,R.id.fragment);
         NavigationUI.setupWithNavController(bottomNavigationView,navController);
-        Toolbar toolbar=findViewById(R.id.toolbar);
-        NavigationUI.setupWithNavController(toolbar,navController);
-        Set<Integer> top=new HashSet<>();
-        top.add(R.id.homeFragment);
-        top.add(R.id.categoryFragment);
-        top.add(R.id.applicationFragment);
     }
 }

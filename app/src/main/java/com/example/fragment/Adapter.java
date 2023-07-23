@@ -3,6 +3,7 @@ package com.example.fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,18 +14,23 @@ import java.util.ArrayList;
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
     private ArrayList<FragmentObject> fragmentList;
     private RecyclerViewClickListener listener;
-    public Adapter(ArrayList<FragmentObject> fragmentList,RecyclerViewClickListener listener)
+    public Adapter(ArrayList<FragmentObject> fragmentList)
+            //,RecyclerViewClickListener listener
     {
         this.fragmentList=fragmentList;
-        this.listener=listener;
+        //this.listener=listener;
     }
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         private TextView nameText;
+        private TextView desc;
+        private ImageView image;
         public MyViewHolder(final View view)
         {
             super(view);
             nameText=view.findViewById(R.id.app_name);
+            desc=view.findViewById(R.id.app_description);
+            image=view.findViewById(R.id.image);
             view.setOnClickListener(this);
         }
         public void onClick(View view) {
@@ -41,8 +47,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        String name=fragmentList.get(position).;
-        holder.nameText.setText(name);
+        FragmentObject data=fragmentList.get(position);
+        holder.nameText.setText(data.getName());
+        holder.desc.setText(data.getDescription());
+        holder.image.setImageResource(data.getImage());
     }
     public int getItemCount()
     {
