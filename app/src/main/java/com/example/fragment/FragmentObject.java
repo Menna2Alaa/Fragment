@@ -13,6 +13,10 @@ public class FragmentObject {
         this.image=image;
     }
 
+    public FragmentObject() {
+
+    }
+
     public String getName() {
         return name;
     }

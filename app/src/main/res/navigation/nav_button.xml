@@ -9,7 +9,11 @@
         android:id="@+id/applicationFragment"
         android:name="com.example.fragment.ApplicationFragment"
         android:label="fragment_application"
-        tools:layout="@layout/fragment_application" />
+        tools:layout="@layout/fragment_application" >
+        <action
+            android:id="@+id/action_applicationFragment_to_newFragment2"
+            app:destination="@id/newFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.fragment.HomeFragment"
@@ -20,4 +24,15 @@
         android:name="com.example.fragment.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" />
+    <fragment
+        android:id="@+id/newFragment2"
+        android:name="com.example.fragment.NewFragment"
+        android:label="NewFragment" >
+        <argument
+            android:name="appName"
+            app:argType="string" />
+        <argument
+            android:name="appDescription"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -5,11 +5,16 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -42,5 +47,20 @@ public class ApplicationFragment extends Fragment {
         RecyclerView recyclerview =view.findViewById(R.id.application);
         Adapter my_adapter=new Adapter(createFragments());
         recyclerview.setAdapter(my_adapter);
+
+        TextView app_name=view.findViewById(R.id.app_name);
+        TextView app_description=view.findViewById(R.id.app_description);
+
+        Button btn=view.findViewById(R.id.nav_button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = app_name.getText().toString();
+                String des = app_description.getText().toString();
+                NavDirections action = ApplicationFragmentDirections.actionApplicationFragmentToNewFragment2(name,des);
+                Navigation.findNavController(view).navigate(action);
+                btn.setVisibility(View.GONE);
+            }
+        });
     }
 }
